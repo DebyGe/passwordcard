@@ -72,7 +72,7 @@ def main():
     if options.shuffle_header:
         random.shuffle(header_row)
     header_row = ''.join(header_row)
-    characters = list(string.punctuation + string.lowercase + string.letters + string.lowercase + string.digits + string.letters + string.lowercase)
+    characters = list(string.punctuation + string.ascii_lowercase + string.ascii_letters + string.ascii_lowercase + string.digits + string.ascii_letters + string.ascii_lowercase)
     digits = list(string.digits+string.digits+string.digits)
 
     max_len = len(header_row)
@@ -122,7 +122,7 @@ def main():
 #    dwg.add(dwg.line(start=(0, 0), end=(100, 100), fill='black', stroke='black'))
     dwg.write(svg_file)
     svg_file.close()
-    print "Your PasswordCard has been created as '%s'" % PASSWORDCARDNAME
+    print ("Your PasswordCard has been created as '%s'" % (PASSWORDCARDNAME))
 
 if __name__ == '__main__':
     try:
@@ -134,10 +134,10 @@ if __name__ == '__main__':
         (options, args) = parser.parse_args()
         main()
         sys.exit(0)
-    except AssertionError, e:
-        print 'ERROR:'
-        print e
-    except Exception, e:
-        print 'ERROR, UNEXPECTED EXCEPTION'
-        print str(e)
+    except AssertionError as e:
+        print ('ERROR:')
+        print (e)
+    except Exception as e:
+        print ('ERROR, UNEXPECTED EXCEPTION')
+        print (str(e))
         sys.exit(8)
